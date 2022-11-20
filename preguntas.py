@@ -23,7 +23,7 @@ def pregunta_01():
 
     """
     count = tbl0.count(axis=0)
-    return str(count)
+    return int(count)
 
 
 def pregunta_02():
@@ -35,7 +35,7 @@ def pregunta_02():
 
     """
     count = tbl0.count(axis=1)
-    return str(count)
+    return int(count)
 
 def pregunta_03():
     """
@@ -210,9 +210,6 @@ def pregunta_11():
     dataf.reset_index(inplace=True)
     dataf = dataf.rename(columns = {'index':'_c0'})
     return dataf
-
-print(pregunta_11().shape)
-print(pregunta_11())
 
 def pregunta_12():
     """
