@@ -34,7 +34,7 @@ def pregunta_02():
 
     """
     count = tbl0.count(axis=1)
-    return count.astype(int)
+    return count
 
 
 
