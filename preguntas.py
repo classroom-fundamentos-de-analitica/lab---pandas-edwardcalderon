@@ -180,7 +180,7 @@ def pregunta_10():
     groups = tbl0.groupby('_c1')['_c2'].apply(group_formated_list)
     dataf = groups.to_frame()
     return dataf
-print(pregunta_10())
+
 def pregunta_11():
     """
     Construya una tabla que contenga _c0 y una lista separada por ',' de los valores de
@@ -197,8 +197,17 @@ def pregunta_11():
     38   38      d,e
     39   39    a,d,f
     """
-    return
+    def group_formated_list(x):
+        listed = list(x)
+        listed.sort()
+        delim = ","
+        temp = list(map(str, listed))
+        res = delim.join(temp)
+        return res
 
+    groups = tbl1.groupby('_c0')['_c4'].apply(group_formated_list)
+    dataf = groups.to_frame()
+    return dataf
 
 def pregunta_12():
     """
@@ -215,8 +224,18 @@ def pregunta_12():
     38   38                    eee:0,fff:9,iii:2
     39   39                    ggg:3,hhh:8,jjj:5
     """
-    return
+    def group_formated_list(x):
+        x = x["_c5a"].astype(str) +":"+ x["_c5b"].astype(str)
+        listed = list(x)
+        listed.sort()
+        delim = ","
+        temp = list(map(str, listed))
+        res = delim.join(temp)
+        return res
 
+    groups = tbl2.groupby('_c0')[['_c5a','_c5b']].apply(group_formated_list)
+    dataf = groups.to_frame()
+    return dataf
 
 def pregunta_13():
     """
