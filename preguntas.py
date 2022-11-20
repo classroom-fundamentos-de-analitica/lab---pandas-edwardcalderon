@@ -23,7 +23,8 @@ def pregunta_01():
 
     """
     count = tbl0.count(axis=0)
-    return count
+    return str(count)
+
 
 def pregunta_02():
     """
@@ -34,8 +35,7 @@ def pregunta_02():
 
     """
     count = tbl0.count(axis=1)
-    return count
-
+    return str(count)
 
 def pregunta_03():
     """
@@ -53,7 +53,6 @@ def pregunta_03():
     """
     counts = tbl0.groupby('_c1').size()
     return counts
-pregunta_03()
 
 def pregunta_04():
     """
@@ -67,8 +66,8 @@ def pregunta_04():
     E    4.785714
     Name: _c2, dtype: float64
     """
-    return
-
+    counts = tbl0.groupby('_c1')['_c2'].mean()
+    return counts
 
 def pregunta_05():
     """
@@ -84,8 +83,8 @@ def pregunta_05():
     E    9
     Name: _c2, dtype: int64
     """
-    return
-
+    counts = tbl0.groupby('_c1')['_c2'].max()
+    return counts
 
 def pregunta_06():
     """
