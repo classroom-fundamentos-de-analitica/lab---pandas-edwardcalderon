@@ -22,10 +22,9 @@ def pregunta_01():
     40
 
     """
-    count = tbl0.count(axis=0)
-    count = pd.to_numeric(count)
-    return count
-    
+    count = tbl0.shape
+    return count[0]
+
 def pregunta_02():
     """
     ¿Cuál es la cantidad de columnas en la tabla `tbl0.tsv`?
@@ -35,7 +34,7 @@ def pregunta_02():
 
     """
     count = tbl0.count(axis=1)
-    return count
+    return count[1]
 
 
 
