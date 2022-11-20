@@ -178,8 +178,9 @@ def pregunta_10():
         return res
 
     groups = tbl0.groupby('_c1')['_c2'].apply(group_formated_list)
-    return groups
-
+    dataf = groups.to_frame().reset_index()
+    return dataf
+ 
 def pregunta_11():
     """
     Construya una tabla que contenga _c0 y una lista separada por ',' de los valores de
