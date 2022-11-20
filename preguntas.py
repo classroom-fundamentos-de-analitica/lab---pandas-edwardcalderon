@@ -23,7 +23,7 @@ def pregunta_01():
 
     """
     count = tbl0.count(axis=0)
-    return pd.to_numeric(count)
+    return count.astype(int)
 
 def pregunta_02():
     """
@@ -34,7 +34,7 @@ def pregunta_02():
 
     """
     count = tbl0.count(axis=1)
-    return pd.to_numeric(count)
+    return count.astype(int)
 
 
 
@@ -239,7 +239,7 @@ def pregunta_12():
     groups = tbl2.groupby('_c0')[['_c5a','_c5b']].apply(group_formated_list)
     dataf = groups.to_frame()
     dataf.reset_index(inplace=True)
-    dataf = dataf.rename(columns = {'index':'_c0'})
+    dataf = dataf.rename(columns = {'index':'_c0', 0:'_c5' })
     return dataf
 
 def pregunta_13():
