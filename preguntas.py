@@ -23,8 +23,7 @@ def pregunta_01():
 
     """
     count = tbl0.count(axis=0)
-    return int(count)
-
+    return pd.to_numeric(count)
 
 def pregunta_02():
     """
@@ -35,7 +34,9 @@ def pregunta_02():
 
     """
     count = tbl0.count(axis=1)
-    return int(count)
+    return pd.to_numeric(count)
+
+
 
 def pregunta_03():
     """
