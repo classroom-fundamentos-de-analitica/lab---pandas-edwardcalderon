@@ -22,8 +22,7 @@ def pregunta_01():
     40
 
     """
-    return
-
+    return tbl0.count(axis=0)
 
 def pregunta_02():
     """
@@ -33,7 +32,7 @@ def pregunta_02():
     4
 
     """
-    return
+    return tbl0.count(axis=1)
 
 
 def pregunta_03():
@@ -50,8 +49,9 @@ def pregunta_03():
     Name: _c1, dtype: int64
 
     """
-    return
-
+    counts = tbl0.groupby('_c1').size()
+    return counts
+pregunta_03()
 
 def pregunta_04():
     """
