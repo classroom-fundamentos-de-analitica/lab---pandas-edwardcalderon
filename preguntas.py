@@ -95,8 +95,10 @@ def pregunta_06():
     ['A', 'B', 'C', 'D', 'E', 'F', 'G']
 
     """
-    return
-
+    uniques = tbl1['_c4'].unique()
+    list_values = [each_string.upper() for each_string in uniques]
+    list_values.sort()
+    return list_values
 
 def pregunta_07():
     """
@@ -111,8 +113,8 @@ def pregunta_07():
     E    67
     Name: _c2, dtype: int64
     """
-    return
-
+    counts = tbl0.groupby('_c1')['_c2'].sum()
+    return counts
 
 def pregunta_08():
     """
@@ -129,7 +131,9 @@ def pregunta_08():
     39   39   E    5  1998-01-26    44
 
     """
-    return
+    cols = ['_c0', '_c2']
+    tbl0['suma'] = tbl0[cols].sum(axis=1)
+    return tbl0
 
 
 def pregunta_09():
@@ -147,8 +151,9 @@ def pregunta_09():
     39   39   E    5  1998-01-26  1998
 
     """
-    return
-
+    tbl0['_c3'] = pd.to_datetime(tbl0['_c3'])
+    tbl0['year'] = tbl0['_c3'].dt.year
+    return tbl0
 
 def pregunta_10():
     """
