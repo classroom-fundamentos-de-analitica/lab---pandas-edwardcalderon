@@ -22,7 +22,8 @@ def pregunta_01():
     40
 
     """
-    return tbl0.count(axis=0)
+    count = tbl0.count(axis=0)
+    return count
 
 def pregunta_02():
     """
@@ -32,7 +33,8 @@ def pregunta_02():
     4
 
     """
-    return tbl0.count(axis=1)
+    count = tbl0.count(axis=1)
+    return count
 
 
 def pregunta_03():
