@@ -206,9 +206,8 @@ def pregunta_11():
         return res
 
     groups = tbl1.groupby('_c0')['_c4'].apply(group_formated_list)
-    dataf = groups
+    dataf = groups.to_frame()
     return dataf
-print(pregunta_11())   
 
 def pregunta_12():
     """
