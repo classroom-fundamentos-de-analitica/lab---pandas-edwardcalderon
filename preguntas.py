@@ -151,8 +151,8 @@ def pregunta_09():
     39   39   E    5  1998-01-26  1998
 
     """
-    tbl0['_c3'] = pd.to_datetime(tbl0['_c3'])
-    tbl0['year'] = tbl0['_c3'].dt.year
+    #tbl0['_c3'] = pd.to_datetime(tbl0['_c3'])
+    tbl0['year'] = tbl0['_c3'].str.split('-',expand=True)[0]
     return tbl0
 
 def pregunta_10():
