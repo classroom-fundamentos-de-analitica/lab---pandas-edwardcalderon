@@ -207,7 +207,12 @@ def pregunta_11():
 
     groups = tbl1.groupby('_c0')['_c4'].apply(group_formated_list)
     dataf = groups.to_frame()
+    dataf.reset_index(inplace=True)
+    dataf = dataf.rename(columns = {'index':'_c0'})
     return dataf
+
+print(pregunta_11().shape)
+print(pregunta_11())
 
 def pregunta_12():
     """
@@ -235,6 +240,8 @@ def pregunta_12():
 
     groups = tbl2.groupby('_c0')[['_c5a','_c5b']].apply(group_formated_list)
     dataf = groups.to_frame()
+    dataf.reset_index(inplace=True)
+    dataf = dataf.rename(columns = {'index':'_c0'})
     return dataf
 
 def pregunta_13():
