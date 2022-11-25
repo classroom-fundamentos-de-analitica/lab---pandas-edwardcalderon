@@ -22,8 +22,8 @@ def pregunta_01():
     40
 
     """
-    return
-
+    count = tbl0.shape
+    return count[0]
 
 def pregunta_02():
     """
@@ -33,7 +33,9 @@ def pregunta_02():
     4
 
     """
-    return
+    count = tbl0.count(axis=1)
+    return count[1]
+
 
 
 def pregunta_03():
@@ -50,8 +52,8 @@ def pregunta_03():
     Name: _c1, dtype: int64
 
     """
-    return
-
+    counts = tbl0.groupby('_c1').size()
+    return counts
 
 def pregunta_04():
     """
@@ -65,8 +67,8 @@ def pregunta_04():
     E    4.785714
     Name: _c2, dtype: float64
     """
-    return
-
+    counts = tbl0.groupby('_c1')['_c2'].mean()
+    return counts
 
 def pregunta_05():
     """
@@ -82,8 +84,8 @@ def pregunta_05():
     E    9
     Name: _c2, dtype: int64
     """
-    return
-
+    counts = tbl0.groupby('_c1')['_c2'].max()
+    return counts
 
 def pregunta_06():
     """
@@ -94,8 +96,10 @@ def pregunta_06():
     ['A', 'B', 'C', 'D', 'E', 'F', 'G']
 
     """
-    return
-
+    uniques = tbl1['_c4'].unique()
+    list_values = [each_string.upper() for each_string in uniques]
+    list_values.sort()
+    return list_values
 
 def pregunta_07():
     """
@@ -110,8 +114,8 @@ def pregunta_07():
     E    67
     Name: _c2, dtype: int64
     """
-    return
-
+    counts = tbl0.groupby('_c1')['_c2'].sum()
+    return counts
 
 def pregunta_08():
     """
@@ -128,7 +132,9 @@ def pregunta_08():
     39   39   E    5  1998-01-26    44
 
     """
-    return
+    cols = ['_c0', '_c2']
+    tbl0['suma'] = tbl0[cols].sum(axis=1)
+    return tbl0
 
 
 def pregunta_09():
@@ -146,8 +152,9 @@ def pregunta_09():
     39   39   E    5  1998-01-26  1998
 
     """
-    return
-
+    #tbl0['_c3'] = pd.to_datetime(tbl0['_c3'])
+    tbl0['year'] = tbl0['_c3'].str.split('-',expand=True)[0]
+    return tbl0
 
 def pregunta_10():
     """
@@ -163,8 +170,17 @@ def pregunta_10():
     3   D                  1:2:3:5:5:7
     4   E  1:1:2:3:3:4:5:5:5:6:7:8:8:9
     """
-    return
+    def group_formated_list(x):
+        listed = list(x)
+        listed.sort()
+        delim = ":"
+        temp = list(map(str, listed))
+        res = delim.join(temp)
+        return res
 
+    groups = tbl0.groupby('_c1')['_c2'].apply(group_formated_list)
+    dataf = groups.to_frame()
+    return dataf
 
 def pregunta_11():
     """
@@ -182,8 +198,19 @@ def pregunta_11():
     38   38      d,e
     39   39    a,d,f
     """
-    return
+    def group_formated_list(x):
+        listed = list(x)
+        listed.sort()
+        delim = ","
+        temp = list(map(str, listed))
+        res = delim.join(temp)
+        return res
 
+    groups = tbl1.groupby('_c0')['_c4'].apply(group_formated_list)
+    dataf = groups.to_frame()
+    dataf.reset_index(inplace=True)
+    dataf = dataf.rename(columns = {'index':'_c0'})
+    return dataf
 
 def pregunta_12():
     """
@@ -200,8 +227,20 @@ def pregunta_12():
     38   38                    eee:0,fff:9,iii:2
     39   39                    ggg:3,hhh:8,jjj:5
     """
-    return
+    def group_formated_list(x):
+        x = x["_c5a"].astype(str) +":"+ x["_c5b"].astype(str)
+        listed = list(x)
+        listed.sort()
+        delim = ","
+        temp = list(map(str, listed))
+        res = delim.join(temp)
+        return res
 
+    groups = tbl2.groupby('_c0')[['_c5a','_c5b']].apply(group_formated_list)
+    dataf = groups.to_frame()
+    dataf.reset_index(inplace=True)
+    dataf = dataf.rename(columns = {'index':'_c0', 0:'_c5' })
+    return dataf
 
 def pregunta_13():
     """
